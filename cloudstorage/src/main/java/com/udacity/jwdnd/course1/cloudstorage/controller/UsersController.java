@@ -1,10 +1,10 @@
 package com.udacity.jwdnd.course1.cloudstorage.controller;
 
-import com.mysql.cj.util.StringUtils;
 import com.udacity.jwdnd.course1.cloudstorage.model.Users;
 import com.udacity.jwdnd.course1.cloudstorage.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +33,7 @@ public class UsersController {
             createUserError = "The User Name already exists.";
         }
 
-        if (StringUtils.isNullOrEmpty(createUserError)) {
+        if (StringUtils.isEmpty(createUserError)) {
             int idxUser = userService.createNewUser(user);
             if (idxUser < 0) {
                 createUserError = "There was an error signing you up. Please try again.";
