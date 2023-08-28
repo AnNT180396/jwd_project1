@@ -32,6 +32,13 @@ public class UserService implements UserDetailsService {
     }
 
     public int createNewUser(Users user) {
+//        SecureRandom random = new SecureRandom();
+//        byte[] salt = new byte[16];
+//        random.nextBytes(salt);
+//        String encodedSalt = Base64.getEncoder().encodeToString(salt);
+//        String hashedPassword = hashService.getHashedValue(user.getPassword(), encodedSalt);
+//        user.setSalt(encodedSalt);
+//        user.setPassword(hashedPassword);
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         user.setEnabled(true);
